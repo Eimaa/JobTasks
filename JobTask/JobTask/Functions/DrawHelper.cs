@@ -1,4 +1,5 @@
 ﻿using JobTask.Constants;
+using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -18,7 +19,7 @@ namespace JobTask.Functions
 
             site.Arrange(new Rect(StaticVariables.win.uniformGrid.RenderSize));
             site.Measure(StaticVariables.win.uniformGrid.RenderSize);
-              
+
 
             Polygon restrictionZone = new Polygon
             {
@@ -35,31 +36,43 @@ namespace JobTask.Functions
             geometry.Geometry1 = site.RenderedGeometry;
             geometry.Geometry2 = restrictionZone.RenderedGeometry;
 
-            int rowSpacing = int.Parse(StaticVariables.win.rowSpacingTextBox.Text);
-            int columnSpacing = int.Parse(StaticVariables.win.columnSpacingTextBox.Text);
-
             StaticVariables.win.path.Data = geometry;
 
-            Rectangle rectangle = new Rectangle
-            {
-                Height = int.Parse(StaticVariables.win.lengthTextBox.Text),
-                Width = int.Parse(StaticVariables.win.widthTextBox.Text),
-                Margin = new Thickness(0,0,columnSpacing,rowSpacing),
-                Stroke = Brushes.Red,
-                StrokeThickness = 2
-            };
+            //**************************************************************
+            //Works until here, below just effort to do something. All in all, I create initial shape geometry in which u could render geometries.
 
-            var bottomQuarter = new RectangleGeometry(
-            new Rect(new Size(int.Parse(StaticVariables.win.lengthTextBox.Text), int.Parse(StaticVariables.win.widthTextBox.Text))));
-            rectangle.Arrange(new Rect(StaticVariables.win.uniformGrid.RenderSize));
-            rectangle.Measure(StaticVariables.win.uniformGrid.RenderSize);
-
-            var combinedGeometry = new CombinedGeometry(GeometryCombineMode.Exclude,
-                                           geometry, bottomQuarter);
+            //int length = int.Parse(StaticVariables.win.lengthTextBox.Text);
+            //int width = int.Parse(StaticVariables.win.widthTextBox.Text);
+            //int rowSpacing = int.Parse(StaticVariables.win.rowSpacingTextBox.Text);
+            //int columnSpacing = int.Parse(StaticVariables.win.columnSpacingTextBox.Text);
 
 
-            StaticVariables.win.path.Data = combinedGeometry;
-            StaticVariables.win.path.Stroke = Brushes.Blue;
+
+            //var totalShapeArea = geometry.GetArea();
+            //double adjustedWidth = length + columnSpacing;
+            //double adjustedHeight = width + rowSpacing;
+            //double solarPanelArea = (length + columnSpacing) * (width + rowSpacing);
+            //var possiblePanelsNumber = Math.Round(totalShapeArea / solarPanelArea);
+
+
+            //GeometryGroup myGeometryGroup = new GeometryGroup();
+            //myGeometryGroup.Children.Add(geometry);
+
+
+
+            //RectangleGeometry myRectGeometry = new RectangleGeometry();
+            //myRectGeometry.Rect = new Rect(new Size(adjustedWidth, adjustedHeight));
+            //myGeometryGroup.Children.Add(myRectGeometry);
+
+
+            //StaticVariables.win.path.Data = myGeometryGroup;
+            //StaticVariables.win.path.Stroke = Brushes.Blue;
+        }
+
+
+        public static bool CheckIfChildIsInsideParent(Geometry parentShape, Geometry childShape)
+        {
+            return (parentShape.FillContainsWithDetail(childShape) == IntersectionDetail.FullyContains);
         }
     }
 }
