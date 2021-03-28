@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "5rYxves6aJ5l0ARBdyq2ta8Mc/hDTpbncurxdvuYBkiE5ISFsKJnR6idf6PG/4a+qgUd0lAY+g4p5cnCElk6Jw==",
+  "success": true,
+  "projectFilePath": "D:\\Projects\\Learning code\\JobTask\\JobTask\\JobTask.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\EimantasBanelis\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\EimantasBanelis\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\EimantasBanelis\\.nuget\\packages\\system.drawing.common\\5.0.2\\system.drawing.common.5.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}
